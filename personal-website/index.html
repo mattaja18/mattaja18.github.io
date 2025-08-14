@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Adamo | Official Website</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+        /* --- CSS Variables for Colours --- */
+        :root {
+            --primary: #4c5478;
+            --secondary: #D1494E;
+            --tertiary: #e5ebea;
+            --text-light: #f0f0f0;
+        }
+
+        /* --- General & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--primary);
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 5rem; margin-top: 0; } /* Removed top margin */
+        h2 { 
+            font-size: 3rem;
+            margin-bottom: 2rem; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        } 
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        /* --- Layout & Containers --- */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        section {
+            padding: 1em 0;
+            margin: 2em 0;
+        }
+
+        /* --- Navigation --- */
+        #main-nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Vertically center nav items */
+            position: fixed;
+            width: 100%;
+            height: 80px; /* Explicit height for calculation */
+            background-color: rgba(76, 84, 120, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        #main-nav ul { list-style: none; display: flex; }
+        #main-nav ul li a {
+            padding: 1rem 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        #main-nav ul li a:hover { color: var(--text-light); }
+        #main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 10px;
+            left: 0;
+            background-color: var(--secondary);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        #main-nav ul li a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+        /* --- Hero Section --- */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0; /* Remove padding */
+            margin-top: 0;
+            min-height: 100vh;
+        }
+        .hero-image-bleed {
+            width: 100%;
+            height: 50vh; /* Adjust height as desired */
+            background-image: url('https://placehold.co/1920x1080');
+            background-size: cover;
+            background-position: center;
+            margin-top: 85px; /* Nav height (80px) + 5px gap */
+            margin-bottom: 5px; /* 5px gap above Poet's Name */
+        }
+        #hero .hero-content {
+            padding: 2rem 1rem;
+        }
+        #hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 600px;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+        .btn-hero {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2.5rem;
+            background-color: var(--secondary);
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            background-color: var(--text-light);
+        }
+
+        /* --- Honours Section --- */
+        .honours-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .honour-item {
+            background-color: var(--tertiary);
+            padding: 1.5rem 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+        .honour-item p { margin: 0; color: var(--primary); }
+        .honour-item .competition {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .honour-item .poem-title {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: rgba(240, 240, 240, 0.6);
+        }
+
+        /* --- 2025 Mobile Responsiveness Standards --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.2rem; }
+            #main-nav { justify-content: center; height: 70px; }
+            .hero-image-bleed { margin-top: 75px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.8rem; letter-spacing: 1px; }
+            .container { padding: 0 1.5rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav id="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#honours">Honours</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-image-bleed"></div>
+            <div class="hero-content">
+                <h1>Matthew Adamo</h1>
+                <p>A contemporary writer and poet. Associated with Verse First. New works to be released in 2026.</p>
+                <a href="#about" class="btn-hero">Find out more</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p> </p>
+                <p>Having moved frequently during my childhood, including living abroad, I found my escape in the pages of books. This lifelong fascination with literature led me to study English Literature at the University of Sussex for both my undergraduate and master's degrees. It was in 2017 that I began writing poetry seriously, a pursuit that eventually connected me with the Verse First poetry group. </p>
+
+<p>My debut novel, a futuristic thriller exploring themes of subterfuge, power, and payback, is due for release in 2026.</p>
+            </div>
+        </section>
+
+        <section id="honours">
+            <div class="container">
+                <h2>Writing Honours</h2>
+                <div class="honours-grid">
+                    <div class="honour-item">
+                        <p class="competition">Poetry Kit Poetry Competition 2019</p>
+                        <p>Shortlisted &mdash; <span class="poem-title">The Walk at Kinsbury</span></p>
+                    </div>
+                    <div class="honour-item">
+                        <p class="competition">Earlyworks Press Poetry Competition 2018</p>
+                        <p>Shortlisted &mdash; <span class="poem-title">The Sword You Raised</span></p>
+                    </div>
+                    <div class="honour-item">
+                        <p class="competition">Earlyworks Press Poetry Competition 2017</p>
+                        <p>Shortlisted &mdash; <span class="poem-title">The Old Tower</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Matthew Adamo. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
