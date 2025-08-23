@@ -1,12 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- Mobile Hamburger Menu ---
+document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.getElementById('nav-links');
 
+    // Toggle the .active class on the nav links when the hamburger is clicked
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        hamburger.innerHTML = navLinks.classList.contains('active') ? '&times;' : '&#9776;';
     });
-    
 });
