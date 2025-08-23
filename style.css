@@ -2,8 +2,10 @@
 :root {
     --primary-color: #007BFF;
     --primary-hover: #0056b3;
-    --dark-color: #222;
+    --dark-color: #1a1a1a;  /* Slightly softer black for background */
     --light-color: #f4f4f4;
+    --text-light: #ffffff;
+    --text-dark: #333333;
     --font-primary: 'Plus Jakarta Sans', sans-serif;
     --font-secondary: 'DM Sans', sans-serif;
 }
@@ -17,8 +19,8 @@
 body {
     font-family: var(--font-secondary);
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: #fff;
+    color: var(--text-dark);
+    background-color: #fff; /* Default background is white */
 }
 
 .container {
@@ -52,14 +54,13 @@ ul {
     list-style: none;
 }
 
-/* --- HEADER & NAVIGATION --- */
+/* --- HEADER & NAVIGATION (CORRECTED) --- */
 .site-header {
-    background: #fff;
+    background: var(--dark-color); /* Dark header background */
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .main-nav {
@@ -70,7 +71,7 @@ ul {
 
 .logo {
     font-size: 1.5rem;
-    color: var(--dark-color);
+    color: var(--text-light); /* White logo text */
 }
 
 .nav-links {
@@ -83,7 +84,7 @@ ul {
 }
 
 .nav-links a {
-    color: var(--dark-color);
+    color: var(--text-light); /* White nav link text */
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -112,22 +113,23 @@ ul {
 }
 
 .hamburger {
-    display: none; /* Hidden on desktop */
+    display: none;
     font-size: 2rem;
     background: none;
     border: none;
     cursor: pointer;
+    color: var(--text-light); /* White hamburger icon */
 }
 
 
-/* --- SECTIONS --- */
+/* --- SECTIONS (BACKGROUNDS CORRECTED) --- */
 section {
     padding: 60px 0;
 }
 
 /* Hero Section */
 .hero {
-    background: var(--light-color);
+    background: var(--light-color); /* Light grey background */
     padding: 80px 0;
 }
 
@@ -138,13 +140,15 @@ section {
 }
 
 /* About Section */
+.about-section {
+    background: #ffffff; /* Explicitly white background */
+}
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
 }
-
 .about-content p {
     margin-bottom: 1rem;
 }
@@ -154,7 +158,7 @@ section {
 
 /* Services Section */
 .services-section {
-    background: var(--light-color);
+    background: var(--light-color); /* Light grey background */
 }
 
 .services-grid {
@@ -176,6 +180,9 @@ section {
 }
 
 /* Proof Section (Testimonial) */
+.proof-section {
+    background: #ffffff; /* Explicitly white background */
+}
 .testimonial-static {
     max-width: 800px;
     margin: 0 auto;
@@ -193,7 +200,7 @@ section {
 
 /* CTA Section */
 .cta-section {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Blue background */
     color: #fff;
 }
 .cta-section h2 {
@@ -208,9 +215,15 @@ section {
     background-color: #eee;
 }
 
+/* Contact Section */
+.contact-us-section {
+    background: var(--light-color); /* Light grey background */
+}
+
+
 /* Footer */
 .site-footer-bottom {
-    background: var(--dark-color);
+    background: var(--dark-color); /* Dark background */
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -223,19 +236,19 @@ section {
 
     /* --- MOBILE NAVIGATION --- */
     .nav-links {
-        display: none; /* Hide nav links by default */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 65px; /* Adjust based on header height */
+        top: 65px; 
         left: 0;
-        background: white;
+        background: var(--dark-color); /* Match header background */
         padding: 20px 0;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     
     .nav-links.active {
-        display: flex; /* Show when active */
+        display: flex;
     }
 
     .nav-links li {
@@ -244,20 +257,20 @@ section {
     }
 
     .btn.btn-desktop {
-        display: none; /* Hide desktop 'Get Started' button */
+        display: none;
     }
 
     .hamburger {
-        display: block; /* Show hamburger button */
+        display: block;
     }
 
     /* --- MOBILE LAYOUTS --- */
     .about-grid,
     .services-grid {
-        grid-template-columns: 1fr; /* Stack grid items */
+        grid-template-columns: 1fr;
     }
 
     .about-image {
-        order: -1; /* Move image to the top in the about section */
+        order: -1;
     }
 }
