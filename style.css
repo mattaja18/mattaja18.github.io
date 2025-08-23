@@ -1,11 +1,9 @@
-/* --- VARIABLES & GLOBAL STYLES --- */
+/* --- VARIABLES & GLOBAL STYLES (UPDATED PALETTE) --- */
 :root {
-    --primary-color: #007BFF;
-    --primary-hover: #0056b3;
-    --dark-color: #1a1a1a;  /* Slightly softer black for background */
-    --light-color: #f4f4f4;
-    --text-light: #ffffff;
-    --text-dark: #333333;
+    --primary-color: #d90429; /* A strong red for buttons */
+    --primary-hover: #b3001b; /* A darker red for hover */
+    --dark-color: #1c2321;    /* The new dark background */
+    --text-color: #edf2f4;    /* The new primary text colour (off-white) */
     --font-primary: 'Plus Jakarta Sans', sans-serif;
     --font-secondary: 'DM Sans', sans-serif;
 }
@@ -19,8 +17,8 @@
 body {
     font-family: var(--font-secondary);
     line-height: 1.6;
-    color: var(--text-dark);
-    background-color: #fff; /* Default background is white */
+    color: var(--text-color); /* Set default text to white */
+    background-color: var(--dark-color); /* Set default background to dark */
 }
 
 .container {
@@ -56,11 +54,12 @@ ul {
 
 /* --- HEADER & NAVIGATION --- */
 .site-header {
-    background: var(--dark-color); /* Dark header background */
+    background: var(--dark-color); /* Use main dark background */
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #333; /* Add a subtle separator */
 }
 
 .main-nav {
@@ -71,7 +70,7 @@ ul {
 
 .logo {
     font-size: 1.5rem;
-    color: var(--text-light); /* White logo text */
+    color: var(--text-color);
 }
 
 .nav-links {
@@ -84,7 +83,7 @@ ul {
 }
 
 .nav-links a {
-    color: var(--text-light); /* White nav link text */
+    color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -99,7 +98,7 @@ ul {
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
-    font-weight: 500;
+    font-weight: 700; /* Bolder font for buttons */
     transition: background-color 0.3s ease;
 }
 
@@ -118,7 +117,7 @@ ul {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--text-light); /* White hamburger icon */
+    color: var(--text-color);
 }
 
 
@@ -127,10 +126,9 @@ section {
     padding: 60px 0;
 }
 
-/* Hero Section */
-.hero {
-    background: var(--light-color); /* Light grey background */
-    padding: 80px 0;
+/* All sections now inherit the body background. We remove specific background overrides. */
+.hero, .about-section, .services-section, .proof-section, .contact-us-section {
+    background: inherit;
 }
 
 .hero .subtitle {
@@ -140,9 +138,6 @@ section {
 }
 
 /* About Section */
-.about-section {
-    background: #ffffff;
-}
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -157,10 +152,6 @@ section {
 }
 
 /* Services Section */
-.services-section {
-    background: var(--light-color);
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -168,26 +159,26 @@ section {
 }
 
 .service-card {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.05); /* Subtle dark card background */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #333; /* Subtle border */
     text-align: center;
 }
 
 .service-card h3 {
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 /* Proof Section (Testimonial) */
-.proof-section {
-    background: #ffffff;
-}
 .testimonial-static {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.3rem;
     font-style: italic;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 2rem;
 }
 
 .testimonial-static cite {
@@ -200,33 +191,28 @@ section {
 
 /* CTA Section */
 .cta-section {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Red background */
     color: #fff;
 }
 .cta-section h2 {
     color: #fff;
 }
 .cta-section .btn {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: #fff; /* White button */
+    color: var(--primary-color); /* Red text */
     font-weight: 700;
 }
 .cta-section .btn:hover {
     background-color: #eee;
 }
 
-/* Contact Section */
-.contact-us-section {
-    background: var(--light-color);
-}
-
-
 /* Footer */
 .site-footer-bottom {
     background: var(--dark-color);
-    color: #fff;
+    color: #aaa; /* Lighter grey for footer text */
     text-align: center;
     padding: 20px 0;
+    border-top: 1px solid #333;
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
@@ -236,25 +222,25 @@ section {
 
     /* --- MOBILE NAVIGATION --- */
     .nav-links {
-        display: none; /* Hide by default */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 75px; /* Adjust based on your header height */
+        top: 75px;
         left: 0;
         background: var(--dark-color);
         padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        border-bottom: 1px solid #333;
     }
     
     .nav-links.active {
-        display: flex; /* Show when active */
+        display: flex;
     }
 
     .nav-links li {
         margin: 15px 0;
         text-align: center;
-        margin-left: 0; /* Override desktop margin */
+        margin-left: 0;
     }
 
     .hamburger {
@@ -268,6 +254,11 @@ section {
     }
 
     .about-image {
-        order: -1; /* Puts image on top in mobile view */
+        order: -1;
+    }
+    
+    .testimonial-static {
+        padding-left: 1rem;
+        text-align: left;
     }
 }
